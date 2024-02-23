@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block content %}
+<div class="content">
+    <form action="{{ url_for('add_movie') }}" method="POST" enctype="multipart/form-data">
+        {{form.csrf_token}}
+    <h1 class="heading">Add a Movie From Local File</h1>
+    <h3>Movie Title: </h3> {{ form.title(class='form-control') }} <br><br>
+    <h3>Movie Release Year: </h3>  {{ form.year(class='form-control') }} <br><br>
+    <h3>General Description: </h3>  {{ form.description(class='form-control') }} <br><br>
+    <h3>Movie Rating: </h3>  {{ form.rating(class='form-control') }} <br><br>
+    <h3>Movie Short Review: </h3>  {{ form.review(class='form-control') }} <br><br>
+    <h3>Movie Cover Image: </h3>  {{ form.img_url }} <br><br>
+    {{ form.submit }}
+    </form>
+</div>
+<div style="height:200px; width:100%"></div>
+{% endblock %}
